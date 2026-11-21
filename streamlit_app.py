@@ -3,7 +3,12 @@ import numpy as np
 import joblib
 
 # Load the trained model
-model = joblib.load("regression_model.joblib")
+@st.cache_resource
+def load_model():
+    return joblib.load("regression_model.joblib")
+
+
+model = load_model()
 
 # App title
 st.title("California Housing Price Predictor")
